@@ -11,7 +11,7 @@ This folder contains all data files, from preprocessing to dataset classes.
 - `preprocess_TCGA_rna.ipynb` – Notebook version with additional visualization options.  
 - `mm_survival_dataset.py`– Dataset class for the multimodal data used during training and testing.  
 
-# Prepare the data
+## Prepare the data
 
 The data should be structured the following.
 ```
@@ -47,38 +47,38 @@ cd src/data
 conda activate dimaf
 ```
 
-## RNA
+### RNA
 Download and preprocess the RNA-seq data for each cohort: 
 
-### TCGA-BRCA
+#### TCGA-BRCA
 ```
 curl -o data_files/tcga_brca/HiSeqV2_PANCAN_BRCA.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.BRCA.sampleMap%2FHiSeqV2_PANCAN.gz
 gunzip data_files/tcga_brca/HiSeqV2_PANCAN_BRCA.gz
 python preprocess_TCGA.py --data brca --name rna_data
 ```
 
-### TCGA-BLCA
+#### TCGA-BLCA
 ```
 curl -o data_files/tcga_blca/HiSeqV2_PANCAN_BLCA.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.BLCA.sampleMap%2FHiSeqV2_PANCAN.gz
 gunzip data_files/tcga_blca/HiSeqV2_PANCAN_BLCA.gz
 python preprocess_TCGA.py --data blca --name rna_data
 ```
 
-### TCGA-LUAD
+#### TCGA-LUAD
 ```
 curl -o data_files/tcga_luad/HiSeqV2_PANCAN_LUAD.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.LUAD.sampleMap%2FHiSeqV2_PANCAN.gz
 gunzip data_files/tcga_luad/HiSeqV2_PANCAN_LUAD.gz
 python preprocess_TCGA.py --data luad --name rna_data
 ```
 
-### TCGA-KIRC
+#### TCGA-KIRC
 ```
 curl -o data_files/tcga_kirc/HiSeqV2_PANCAN_KIRC.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.KIRC.sampleMap%2FHiSeqV2_PANCAN.gz
 gunzip data_files/tcga_kirc/HiSeqV2_PANCAN_KIRC.gz
 python preprocess_TCGA.py --data kirc --name rna_data
 ```
 
-## WSI
+### WSI
 
 For the whole slide image, follow these steps:
 - **Download the WSIs** from [The GDC data portal](https://portal.gdc.cancer.gov)
@@ -89,7 +89,7 @@ For the whole slide image, follow these steps:
 
 
 
-# Tips & Notes
+## Tips & Notes
 - Make sure all folder names match exactly for scripts to work.
 - RNA preprocessing creates a unified `rna_data.csv`.
 - We used [UNI](https://github.com/mahmoodlab/UNI) to extract features from 256x256 patches at 0.5 μm resolution, stored under `extracted_res0_5_patch256_uni/feats_h5/`.

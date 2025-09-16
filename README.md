@@ -6,19 +6,19 @@ To improve the prediction of cancer survival using whole-slide images and transc
 
 **Contact:** Aniek Eijpe (a.eijpe@uu.nl)
 
-# Updates
+## Updates
 - **16-09-2025:** First version of the codebase is online!
 - **TODO:** Update references, paper is accepted at MICCAI 2025.
 
-# Future work
+## Future work
 As stated in the paper, future work is currently exploring the inherent interpretability of DIMAF by combining the attention weights of the intra- and inter-modal interactions with SHAP values of the multimodal disentangled features to capture both modality-shared and modality-specific feature importance and multimodal interactions. This dual approach will offer more robust insights into how different data modalities interact in DIMAF for accurate survival prediction. 
 **Coming soon – stay tuned!**
 
-# Model checkpoints
+## Model checkpoints
 Our model is trained on the outputs of the [UNI](https://github.com/mahmoodlab/UNI) foundation model. Due to [UNI licensing restrictions](https://huggingface.co/MahmoodLab/UNI), we cannot provide the pretrained weights of our model directly.
 Instead, we provide detailed instructions to fully reproduce our results. If anything is unclear or if you encounter issues, please don’t hesitate to open an issue or contact us via email at a.eijpe@uu.nl.
 
-# Usage
+## Usage
 ### Installation
 After cloning the repository, create the DIMAF conda environment as follows:
 ```
@@ -36,11 +36,11 @@ The full workflow consists of the following steps:
 For detailed instructions on each step, please see the [README in src](src/README.md).
 
 
-# Acknowledgements
+## Acknowledgements
 This project builds upon several excellent research repositories, including [MMP](https://github.com/mahmoodlab/MMP), [UNI](https://github.com/mahmoodlab/UNI), [CLAM](https://github.com/mahmoodlab/CLAM) and [CSDisentanglement_Metrics_Library](https://github.com/vios-s/CSDisentanglement_Metrics_Library).
 We are grateful to the authors and developers of these projects for their contributions and for sharing their work openly.
 
-# Reference
+## Reference
 Please consider citing our [paper](https://arxiv.org/abs/2503.16069) if this work or code contributes to your research.
 ```
 @article{eijpe2025disentangled,

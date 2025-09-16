@@ -1,10 +1,10 @@
 # Instructions on running DIMAF
-### 1. Data preprocessing
+## 1. Data preprocessing
 First , prepare the data such that DIMAF can use it. Please see the [README](data/README.md) in the `data `folder for detailed instructions on how to download, preprocesss and structure the data. 
 Currently it supports the 4 [TCGA](https://portal.gdc.cancer.gov) data cohorts used in the paper, i.e., BRCA, BLCA, LUAD and KIRC. However, it can easily be adapted to other cohorts.
 
 
-### 2. Constructing initial histology prototypes
+## 2. Constructing initial histology prototypes
 DIMAF requires initial prototypes to serve as means for the mixture distributions. Following the approach from MMP and PANTHER, we cluster the training data and use the cluster centers as the prototype means.
 To construct the prototypes, run:
 
@@ -25,7 +25,7 @@ python main_prototype.py --data_source data/data_files/tcga_brca \
 For all possible arguments, see `main_prototype.py`. The default values reproduce the DIMAF settings used in our paper.
 
 
-### 3. Training DIMAF for survival prediction
+## 3. Training DIMAF for survival prediction
 To train DIMAF on the TCGA-BRCA dataset, run
 ```
 python main_survival.py --data_source data/data_files/tcga_brca/ \
@@ -54,7 +54,7 @@ python main_survival.py --data_source data/data_files/tcga_brca/ \
 For all possible arguments, see `main_survival.py`. The default values reproduce the DIMAF settings used in our paper.
 
 
-### 4. Testing DIMAF for survival prediction
+## 4. Testing DIMAF for survival prediction
 To test a trained model, run the same command as in training but set `--mode test` and add `--return_attn` to save attention matrices for interpretability:
 ```
 python main_survival.py --data_source data/data_files/tcga_brca/ \
@@ -71,7 +71,7 @@ python main_survival.py --data_source data/data_files/tcga_brca/ \
 
 To evaluate survival and disentanglement performance across folds (mean ± std), use `get_results.ipynb`.
 
-### 5. Running SHAP for feature importance of the disentangled representations
+## 5. Running SHAP for feature importance of the disentangled representations
 To compute SHAP values, run the same command as training but set `--mode shap` and include `--shap_refdist_n` and `--explainer`:
 - `shap_refdist_n`: Size of the background samples (training set). Recommended:
     - BRCA: 512
