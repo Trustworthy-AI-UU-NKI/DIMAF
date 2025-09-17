@@ -2,7 +2,7 @@
 
 This folder contains all data files, from preprocessing to dataset classes.  
 
-- `files/` – Contains all data files:  
+- `data_files/` – Contains all data files:  
   - `hallmarks_signatures.csv`: gene sets for all pathways.  
   - Cohort-specific folders (`tcga_blca`, `tcga_brca`, `tcga_luad`, `tcga_kirc`) containing:  
     - Train/test splits for 5-fold cross-validation (stratified by site).  
@@ -28,10 +28,9 @@ tcga_cohort/
         ├─ HiSeqV2_PANCAN_BRCA
         └─ rna_data.csv
     ├─ wsi/
+        ├─ images/
         └─ extracted_res0_5_patch256_uni/
-            ├─ feats_h5/
-            └─ images/
-
+            └─ feats_h5/
     └─ clinical_data_all.csv
 ```
 
@@ -39,13 +38,7 @@ tcga_cohort/
 - `clinical_data_all.csv` contains all samples with additional clinical information (tumor type, etc.).  
 
 We now need to obtain **RNA data** and **WSI data**.  
-
-First, navigate to the data folder and activate the environment:
-
-```
-cd src/data
-conda activate dimaf
-```
+After activating the conda environment, navigate to this folder (`src/data`).
 
 ### RNA
 Download and preprocess the RNA-seq data for each cohort: 
@@ -80,8 +73,8 @@ python preprocess_TCGA.py --data kirc --name rna_data
 
 ### WSI
 
-For the whole slide image, follow these steps:
-- **Download the WSIs** from [The GDC data portal](https://portal.gdc.cancer.gov)
+For the whole slide images, follow these steps:
+- **Download the WSIs**: from [The GDC data portal](https://portal.gdc.cancer.gov)
 - **Ensure unified resolution:** images/patches must have a resolution of 0.5 micrometer per pixel.
 - **Process & store the WSIs:** Segment & patch the images, and extract features:
     - We used the [CLAM](https://github.com/mahmoodlab/CLAM) framework and the [UNI](https://github.com/mahmoodlab/UNI) WSI foundation model to extract patch features.
@@ -91,7 +84,6 @@ For the whole slide image, follow these steps:
 
 ## Tips & Notes
 - Make sure all folder names match exactly for scripts to work.
-- RNA preprocessing creates a unified `rna_data.csv`.
-- We used [UNI](https://github.com/mahmoodlab/UNI) to extract features from 256x256 patches at 0.5 μm resolution, stored under `extracted_res0_5_patch256_uni/feats_h5/`.
+- We used [UNI](https://github.com/mahmoodlab/UNI) to extract features from 256x256 patches at 0.5 μm resolution, stored in `extracted_res0_5_patch256_uni/feats_h5/`.
 - As a substitute of CLAM, [TRIDENT](https://github.com/mahmoodlab/TRIDENT) can be used with a variety of patch encoders. However, the code has not been tested for this yet.
 - For the visualizaiton of the WSIs, store the WSI files (`.svs`) in the `images` subfolder
