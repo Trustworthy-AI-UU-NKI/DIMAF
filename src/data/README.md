@@ -45,29 +45,29 @@ Download and preprocess the RNA-seq data for each cohort:
 
 #### TCGA-BRCA
 ```
-curl -o data_files/tcga_brca/HiSeqV2_PANCAN_BRCA.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.BRCA.sampleMap%2FHiSeqV2_PANCAN.gz
-gunzip data_files/tcga_brca/HiSeqV2_PANCAN_BRCA.gz
+curl -o data_files/tcga_brca/rna/HiSeqV2_PANCAN_BRCA.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.BRCA.sampleMap%2FHiSeqV2_PANCAN.gz
+gunzip data_files/tcga_brca/rna/HiSeqV2_PANCAN_BRCA.gz
 python preprocess_TCGA_rna.py --data brca --name rna_data
 ```
 
 #### TCGA-BLCA
 ```
-curl -o data_files/tcga_blca/HiSeqV2_PANCAN_BLCA.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.BLCA.sampleMap%2FHiSeqV2_PANCAN.gz
-gunzip data_files/tcga_blca/HiSeqV2_PANCAN_BLCA.gz
+curl -o data_files/tcga_blca/rna/HiSeqV2_PANCAN_BLCA.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.BLCA.sampleMap%2FHiSeqV2_PANCAN.gz
+gunzip data_files/tcga_blca/rna/HiSeqV2_PANCAN_BLCA.gz
 python preprocess_TCGA_rna.py --data blca --name rna_data
 ```
 
 #### TCGA-LUAD
 ```
-curl -o data_files/tcga_luad/HiSeqV2_PANCAN_LUAD.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.LUAD.sampleMap%2FHiSeqV2_PANCAN.gz
-gunzip data_files/tcga_luad/HiSeqV2_PANCAN_LUAD.gz
+curl -o data_files/tcga_luad/rna/HiSeqV2_PANCAN_LUAD.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.LUAD.sampleMap%2FHiSeqV2_PANCAN.gz
+gunzip data_files/tcga_luad/rna/HiSeqV2_PANCAN_LUAD.gz
 python preprocess_TCGA_rna.py --data luad --name rna_data
 ```
 
 #### TCGA-KIRC
 ```
-curl -o data_files/tcga_kirc/HiSeqV2_PANCAN_KIRC.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.KIRC.sampleMap%2FHiSeqV2_PANCAN.gz
-gunzip data_files/tcga_kirc/HiSeqV2_PANCAN_KIRC.gz
+curl -o data_files/tcga_kirc/rna/HiSeqV2_PANCAN_KIRC.gz https://tcga-xena-hub.s3.us-east-1.amazonaws.com/download/TCGA.KIRC.sampleMap%2FHiSeqV2_PANCAN.gz
+gunzip data_files/tcga_kirc/rna/HiSeqV2_PANCAN_KIRC.gz
 python preprocess_TCGA_rna.py --data kirc --name rna_data
 ```
 
