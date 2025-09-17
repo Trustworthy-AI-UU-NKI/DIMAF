@@ -214,7 +214,7 @@ class DIMAF(nn.Module):
         rna_emb = self.f_g(rna)
 
         # Append prototype embedding to the features
-        z_g, z_h = self.append_pt_embeddings(rna_emb, wsi_emb)
+        z_g, z_h = self.append_pt_embeddings(wsi_emb, rna_emb)
 
 
         # Required for visualization
