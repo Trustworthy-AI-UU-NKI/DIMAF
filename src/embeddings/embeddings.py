@@ -39,13 +39,14 @@ def get_mixture_params(X, p):
 
 def reshape_embeddings(dataloader, n_proto):
     """ Reshape the embeddings to be concatenated features of the prob and mean per prototype. """
+    new_in_dim = dataloader.dataset.X.shape[-1]
     prob, mean = get_mixture_params(dataloader.dataset.X, n_proto)
 
     # Embeddings with importance and mean per mixture 
     dataloader.dataset.X = torch.cat([torch.Tensor(prob).unsqueeze(dim=-1), torch.Tensor(mean)], dim=-1)
 
     # New input dimension after reshaping
-    in_dim = prob.shape[-1] + mean.shape[-1]
+    in_dim = (new_in_dim // n_proto) - mean.shape[-1]
 
     return dataloader, in_dim
 
