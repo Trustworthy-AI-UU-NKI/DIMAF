@@ -78,7 +78,7 @@ def get_slide_embeddings(args, mode, dataloader):
     assert dataloader.dataset.X is not None
     
     # Reshape the embeddings to be concatenated features of the prob and mean per prototype
-    dataloader, in_dim = reshape_embeddings(dataloader, args.n_proto, args.wsi_embed_no_var)
+    dataloader, in_dim = reshape_embeddings(dataloader, args.n_proto)
 
     return dataloader, in_dim
 
