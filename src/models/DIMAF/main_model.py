@@ -58,7 +58,7 @@ class DIMAF(nn.Module):
         self.f_g = MultiSNN(self.rna_dims, self.single_out_dim)
 
         # Add type embeddings to each prototype
-        self.single_out_dim, self.wsi_pt_embedding, self.rna_pt_embedding = self.get_pt_embed()
+        self.single_out_dim, self.wsi_pt_embedding, self.rna_pt_embedding = self.get_pt_embeddings()
 
         multi_out_dim = self.single_out_dim // 2
 
