@@ -286,24 +286,26 @@ class DIMAF(nn.Module):
     def compute_loss(self, output, label, censorship):
         """Compute the loss given the output of the model."""
         logits = output['logits']
+        results_dict = {'logits': logits}
 
         if isinstance(self.loss_fn, NLLSurvLoss):
-            # Negative log likelihood loss
             total_loss, log_dict = self.loss_fn(logits=logits, times=label, censorships=censorship)
             hazards = torch.sigmoid(logits)
             survival = torch.cumprod(1 - hazards, dim=1)
             risk = -torch.sum(survival, dim=1).unsqueeze(dim=1)
-        
-            results_dict = {'hazards': hazards,
+            results_dict.update({'hazards': hazards,
                                     'survival': survival,
-                                    'risk': risk}
+                                    'risk': risk})
 
-        elif isinstance(self.loss_fn, CoxLoss) or isinstance(self.loss_fn, DisentangledSurvLoss):
-            # Cox proportional hazards loss
+        elif isinstance(self.loss_fn, CoxLoss):
             total_loss, log_dict = self.loss_fn(logits=logits, times=label, censorships=censorship)
             risk = torch.exp(logits)
-            results_dict = {'risk': risk}
-
+            results_dict['risk'] = risk
+        
+        elif isinstance(self.loss_fn, DisentangledSurvLoss):
+            total_loss, log_dict = self.loss_fn(output=output, times=label, censorships=censorship)
+            risk = torch.exp(logits)
+            results_dict['risk'] = risk
 
         results_dict['loss'] = total_loss
 
