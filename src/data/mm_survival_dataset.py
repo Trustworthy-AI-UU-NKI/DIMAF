@@ -213,7 +213,7 @@ class MMSurvivalDataset(Dataset):
 
     def setup_rna_pathways(self):
         """ Load Hallmarks biological pathways, which serve as the prototypes. """
-        signatures = pd.read_csv(os.path.join(os.path.dirname(self.data_source), f"hallmarks_signatures.csv"))
+        signatures = pd.read_csv(os.path.join(os.path.dirname(self.data_source), f"../hallmarks_signatures.csv"))
         # Stores which genes are in which pathway (list of genes per pathway)
         self.genes_in_pathways = []
         # Stores the names of the pathways
