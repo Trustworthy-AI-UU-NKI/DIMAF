@@ -175,7 +175,7 @@ class DIMAF(nn.Module):
         disentangled_embedding = torch.concat([z_hg, z_gh, z_gg, z_hh], dim=1)
 
         # Risk prediction
-        logits = self.risk_predictor(disentangled_embedding)
+        logits = self.f_surv(disentangled_embedding)
 
         return logits
     
@@ -253,7 +253,7 @@ class DIMAF(nn.Module):
         disentangled_embedding = torch.concat([z_hg, z_gh, z_gg, z_hh], dim=1)
 
         # Risk prediction
-        logits = self.risk_predictor(disentangled_embedding)
+        logits = self.f_surv(disentangled_embedding)
         
         results = {"wsi_rna_repr": z_hg,
                             "rna_wsi_repr": z_gh,
