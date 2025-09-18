@@ -1,16 +1,12 @@
 # Instructions on running DIMAF
 ## 1. Data preprocessing
-First , prepare the data such that DIMAF can use it. Please see the [README](data/README.md) in the `data `folder for detailed instructions on how to download, preprocesss and structure the data. 
-Currently, it supports the 4 [TCGA](https://portal.gdc.cancer.gov) data cohorts used in the paper, i.e., BRCA, BLCA, LUAD and KIRC. However, it can easily be adapted to other cohorts also.
+First , prepare the data such that DIMAF can use it. Please see the [README](data/README.md) in the `data` folder for detailed instructions on how to download, preprocesss and structure the data. 
+Currently, it supports the 4 [TCGA](https://portal.gdc.cancer.gov) data cohorts used in the paper, i.e., BRCA, BLCA, LUAD and KIRC. However, it can easily be adapted to other cohorts also. After this step, cd back to the current directory (`src`).
 
 
 ## 2. Constructing initial histology prototypes
-DIMAF requires initial prototypes to serve as means for the mixture distributions. Following the approach from MMP and PANTHER, we cluster the training data and use the cluster centers as the prototype means.
-To construct the prototypes, run:
-
 DIMAF obtains initial prototypes as means for the mixture distributions by clustering the train data and taking the cluster centres as initial means. To construct these initial mixture distribution means (prototypes), run 
 ```
-cd source
 python main_prototype.py --data_source data/data_files/tcga_brca \
                          --wsi_dir wsi/extracted_res0_5_patch256_uni/feats_h5/ \
                          --mode faiss \

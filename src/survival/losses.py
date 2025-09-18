@@ -193,8 +193,8 @@ class DistanceCorrelationLoss(nn.Module):
     
     def compute_dist_corr(self, x, y):
         # Compute Euclidean pairwise distance matrices
-        a = torch.cdist(x, x)
-        b = torch.cdist(y, y)
+        a = torch.cdist(x, x, p=2)
+        b = torch.cdist(y, y, p=2)
 
         # Double-centering
         A = a - a.mean(dim=0, keepdim=True) - a.mean(dim=1, keepdim=True) + a.mean()

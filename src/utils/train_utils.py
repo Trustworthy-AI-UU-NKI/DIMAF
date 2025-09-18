@@ -23,18 +23,20 @@ def get_optim(args, model):
     
     return optimizer
 
-
 def get_lr_scheduler(args, optimizer, n_data):
     """Get the specified learning rate scheduler, adapted from https://github.com/mahmoodlab/MMP/blob/main/src/utils/utils.py"""
     scheduler_name = args.lr_scheduler
     warmup_steps = args.warmup_steps
+    warmup_epochs = args.warmup_epochs
     epochs = args.max_epochs
+    assert not (warmup_steps > 0 and warmup_epochs > 0), "Cannot have both warmup steps and epochs"
  
     if warmup_steps > 0:
         warmup_steps = warmup_steps
+    elif warmup_epochs > 0:
+        warmup_steps = warmup_epochs * n_data
     else:
         warmup_steps = 0
-
     if scheduler_name=='constant':
         lr_scheduler = get_constant_schedule_with_warmup(optimizer=optimizer,
         num_warmup_steps=warmup_steps)
@@ -50,7 +52,6 @@ def get_lr_scheduler(args, optimizer, n_data):
         num_training_steps=n_data * epochs,
         )
     return lr_scheduler
-
 
 def list_to_device(list, device):
     """ Put all items in a list to the device (cpu or gpu). """

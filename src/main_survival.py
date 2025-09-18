@@ -63,6 +63,7 @@ def k_fold_test(args):
 
 def k_fold_train(args):
     """ K-fold cross-validation - Train only. """
+    save_exp_settings(args)
     for i in range(args.folds):
         # Get train dataloader
         train_dl = create_dataloader(args, fold=i, mode="train")
@@ -79,6 +80,8 @@ def k_fold_train_test(args):
         test_dl = create_dataloader(args, fold=i, mode="test")
         # Train & test for this fold
         survival_train(args, i, train_dl, test_dl)
+        return
+
 
  
 def main(args):
@@ -125,7 +128,7 @@ if __name__ == "__main__":
     parser.add_argument('--wd', type=float, default=1e-5, help='weight decay')
     parser.add_argument('--lr_scheduler', type=str, choices=['cosine', 'linear', 'constant'], default='cosine')
     parser.add_argument('--warmup_steps', type=int, default=-1, help='warmup iterations')
-
+    parser.add_argument('--warmup_epochs', type=int, default=1, help='warmup epochs')
 
     # PANTHER args
     parser.add_argument('--ot_eps', default=0.1, type=float, help='Strength for entropic constraint regularization for OT')
@@ -137,8 +140,8 @@ if __name__ == "__main__":
 
 
     # Loss args
-    parser.add_argument('--w_dis', type=float, default=7)
-    parser.add_argument('--w_surv', type=float, default=1)
+    parser.add_argument('--w_dis', type=float, default=7.0)
+    parser.add_argument('--w_surv', type=float, default=1.0)
     parser.add_argument('--n_label_bins', type=int, default=4, help='number of bins for event time discretization')
     parser.add_argument('--loss_fn', type=str, default='cox_distcor', choices=['nll', 'cox', 'cox_orthogonal', 'cox_distcor', 'cox_hsic', 'nll_orthogonal', 'nll_distcor'],help='which loss function to use')
     parser.add_argument('--nll_alpha', type=float, default=0.5, help='Balance between censored / uncensored loss (in NLL)')

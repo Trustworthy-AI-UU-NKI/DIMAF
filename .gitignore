@@ -3,6 +3,8 @@
 .DS_Store
 .vscode
 
+jobs/
+
 # results
 src/results/
 src/logs/
@@ -10,8 +12,6 @@ src/logs/
 # Ignore rna and wsi data & representation files
 src/data/data_files/*/rna/
 src/data/data_files/*/wsi/
-src/data/data_files/*/splits/*/scaler_rna_data.pkl
+src/data/data_files/*/splits/*/rna_data_scaler_fold_*.pkl
 src/data/data_files/*/splits/*/prototypes_*/
 src/data/data_files/*/splits/*/embeddings_*/
-src/data/data_files/*/splits/*/train_old.csv
-src/data/data_files/*/splits/*/test_old.csv

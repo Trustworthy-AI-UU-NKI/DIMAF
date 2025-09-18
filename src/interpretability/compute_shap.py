@@ -17,7 +17,7 @@ def get_multimodal_dataset(args, mode, fold):
 
     # Load WSI embeddings from PANTHER
     embeddings_name = f"{mode}_uni_embeddings_wsi_proto_{args.n_proto}_em_{args.em_iter}_tau_{args.tau}.pkl"
-    embedding_dir = os.path.join(dataset.split_dir, 'embeddings_MMDF')
+    embedding_dir = os.path.join(dataset.split_dir, 'embeddings_DIMAF')
 
     try:
         embeddings = load_pkl(embedding_dir, embeddings_name)
@@ -25,11 +25,11 @@ def get_multimodal_dataset(args, mode, fold):
         print("Something is wrong; there are no embeddings for the defined WSI's. Please check if the embeddings exist.")
 
     dataset.X, dataset.Y = embeddings['X'], embeddings['y']
-
+    new_in_dim = dataset.X.shape[-1]
     # Use only the proportion and mean of each mixture as WSI representation
     prob, mean = get_mixture_params(dataset.X, args.n_proto)
     dataset.X = torch.cat([torch.Tensor(prob).unsqueeze(dim=-1), torch.Tensor(mean)], dim=-1)
-    in_dim = prob.shape[-1] + mean.shape[-1]
+    in_dim = (new_in_dim // args.n_proto) - mean.shape[-1]
 
     return dataset, in_dim
 
@@ -95,12 +95,12 @@ def survival_shap(args, fold, shap_type='start'):
 
     # Obtain train and test input data for the shap_module
     if shap_type == 'post_attn':  
-        train_data, feature_names, _ = prepare_data_shap_post_attn(train_data, model, args.num_workers)
-        test_data, feature_names_test, samples_test = prepare_data_shap_post_attn(test_data, model, args.num_workers)
+        train_data, feature_names, _ = prepare_data_shap_post_attn(train_data, model)
+        test_data, feature_names_test, samples_test = prepare_data_shap_post_attn(test_data, model)
         assert feature_names_test == feature_names
     elif shap_type == 'post_attn_av':  
-        train_data, feature_names, _ = prepare_data_shap_post_attn_av(train_data, model, args.num_workers)
-        test_data, feature_names_test, samples_test = prepare_data_shap_post_attn_av(test_data, model, args.num_workers)
+        train_data, feature_names, _ = prepare_data_shap_post_attn_av(train_data, model)
+        test_data, feature_names_test, samples_test = prepare_data_shap_post_attn_av(test_data, model)
         assert feature_names_test == feature_names
     else:
         sys.exit("SHAP mode is not implemented, abborting....")

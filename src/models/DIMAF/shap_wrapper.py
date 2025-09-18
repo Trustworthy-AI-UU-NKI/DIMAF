@@ -90,10 +90,9 @@ class SHAP_DIMAF(nn.Module):
 
             # Get the batch
             post_attn_av_batch = data[i:i+bs] # [B, 4, Dz]
-            reshaped_tensor = post_attn_av_batch.reshape(bs, 4*post_attn_av_batch.shape[-1])
 
             # Forward pass
-            out = self.model.f_surv(reshaped_tensor)
+            out = self.model.f_surv(post_attn_av_batch)
             all_logits.append(out)
         
         logits = torch.cat(all_logits, dim=0)

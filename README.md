@@ -23,7 +23,7 @@ Instead, we provide detailed instructions to fully reproduce our results. If any
 After cloning the repository, create the DIMAF conda environment as follows:
 ```
 cd DIMAF
-conda env create -f env.yml
+conda env create -f env.yaml
 conda activate dimaf
 ```
 

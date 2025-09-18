@@ -64,7 +64,7 @@ def test_survival_model(model, test_dl, device, result_dir=None, survival_info_t
             if 'repr' in key:  # embeddings
                 all_results[key] = torch.cat(vals, dim=0)
             else:  # numpy arrays
-                all_results[key] = np.concatenate(vals, axis=0).squeeze(1)
+                all_results[key] = np.concatenate(vals).squeeze()
 
         # Compute disentanglement metrics
         dcor_dict = compute_disentanglement(all_results['rna_repr'], all_results['wsi_repr'],

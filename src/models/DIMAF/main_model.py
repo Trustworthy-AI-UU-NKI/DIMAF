@@ -145,7 +145,7 @@ class DIMAF(nn.Module):
         rna_emb = self.f_g(rna)
 
         # Append prototype embeddings
-        z_g, z_h = self.append_pt_embed(wsi_emb, rna_emb)
+        z_g, z_h = self.append_pt_embeddings(wsi_emb, rna_emb)
 
         # Pass through disentangled fusion 
         post_attn_tokens = self.disentangled_attention_fusion(z_h, z_g)
