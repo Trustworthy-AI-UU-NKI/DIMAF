@@ -80,7 +80,6 @@ def k_fold_train_test(args):
         test_dl = create_dataloader(args, fold=i, mode="test")
         # Train & test for this fold
         survival_train(args, i, train_dl, test_dl)
-        return
 
 
  

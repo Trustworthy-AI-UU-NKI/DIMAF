@@ -69,7 +69,7 @@ def survival_train(args, fold, train_dl, test_dl=None):
 
     if not test_dl == None:
         pre_results = test_survival_model(model, test_dl, device)
-        log_results(writer, pre_results, epoch, mode='test')
+        log_results(writer, pre_results, 0, mode='test')
 
     print('\nStart training ...')
     for epoch in range(args.max_epochs):

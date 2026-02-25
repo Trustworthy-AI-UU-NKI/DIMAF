@@ -21,7 +21,7 @@ python main_prototype.py --data_source data/data_files/tcga_brca \
 For all possible arguments, see `main_prototype.py`. The default values reproduce the DIMAF settings used in our paper.
 
 
-## 3. Training DIMAF for survival prediction
+## 3. Train and test DIMAF for survival prediction
 To train DIMAF on the TCGA-BRCA dataset, run
 ```
 python main_survival.py --data_source data/data_files/tcga_brca/ \
@@ -33,7 +33,7 @@ python main_survival.py --data_source data/data_files/tcga_brca/ \
                         --omics_type rna_data \
                         --w_dis 7 \
                         --w_surv 1 \
-                        --mode train
+                        --mode train_test
 ```
 **List of arguments:**
 - `data_source`: Path of the data, default is _data/data_files/tcga_brca/_. Adjust to use other cohorts by replacing `brca` with `blca`, `kirc` or `luad`.

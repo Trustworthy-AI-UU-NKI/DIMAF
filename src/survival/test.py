@@ -83,8 +83,9 @@ def test_survival_model(model, test_dl, device, result_dir=None, survival_info_t
         results.update(orth_dict)
 
         # Save predicted risk scores
-        risk_scores_dict = {k: all_results[k] for k in ['case_ids', 'slide_ids', 'risk', 'censorship', 'event_time']}
-        save_pkl(result_dir, "predicted_risk_scores_test.pkl", risk_scores_dict)
+        if result_dir:
+            risk_scores_dict = {k: all_results[k] for k in ['case_ids', 'slide_ids', 'risk', 'censorship', 'event_time']}
+            save_pkl(result_dir, "predicted_risk_scores_test.pkl", risk_scores_dict)
 
         # Save attention data
         if return_attn:
