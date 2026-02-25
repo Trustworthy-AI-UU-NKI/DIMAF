@@ -66,6 +66,11 @@ def survival_train(args, fold, train_dl, test_dl=None):
     #####################
     # The training loop #
     #####################
+
+    if not test_dl == None:
+        pre_results = test_survival_model(model, test_dl, device)
+        log_results(writer, pre_results, epoch, mode='test')
+
     print('\nStart training ...')
     for epoch in range(args.max_epochs):
         # Train
@@ -75,6 +80,10 @@ def survival_train(args, fold, train_dl, test_dl=None):
         
         # Save last model
         torch.save(model.state_dict(), os.path.join(result_dir_fold, "model_checkpoint.pth"))
+        
+        if not test_dl == None:
+            int_results = test_survival_model(model, test_dl, device)
+            log_results(writer, int_results, epoch, mode='test')
 
     # Test the model
     print(f'End of training')
@@ -138,4 +147,3 @@ def train_loop(model, dataloader, optimizer, lr_scheduler, device):
     train_data_info = {'censorship': all_train_results['censorship'], 'time': all_train_results['event_time']}
 
     return results, train_data_info
-    
