@@ -8,7 +8,6 @@ To improve the prediction of cancer survival using whole-slide images and transc
 
 ## Updates
 - **16-09-2025:** First version of the codebase is online!
-- **TODO:** Update references, paper is accepted at MICCAI 2025.
 
 ## Future work
 As stated in the paper, future work is currently exploring the inherent interpretability of DIMAF by combining the attention weights of the intra- and inter-modal interactions with SHAP values of the multimodal disentangled features to capture both modality-shared and modality-specific feature importance and multimodal interactions. This dual approach will offer more robust insights into how different data modalities interact in DIMAF for accurate survival prediction. 
@@ -45,12 +44,15 @@ We are grateful to the authors and developers of these projects for their contri
 ## Reference
 Please consider citing our [paper](https://arxiv.org/abs/2503.16069) if this work or code contributes to your research.
 ```
-@article{eijpe2025disentangled,
-    title={Disentangled and Interpretable Multimodal Attention Fusion for cancer survival prediction},
-    author={Eijpe, Aniek and Lakbir, Soufyan and Cesur, Melis Erdal and Oliveira, Sara P and Abeln, Sanne and Silva, Wilson},
-    journal={arXiv preprint arXiv:2503.16069},
-    year={2025}
-    }
+@InProceedings{eijpe2025disentangled,
+    author={Eijpe, Aniek and Lakbir, Soufyan and Erdal Cesur, Melis and Oliveira, Sara P and Abeln, Sanne and Silva, Wilson},
+    title={Disentangled and Interpretable Multimodal Attention Fusion for Cancer Survival Prediction},
+    booktitle={Medical Image Computing and Computer Assisted Intervention - MICCAI 2025},
+    year={2026},
+    publisher={Springer Nature Switzerland},
+    address={Cham},
+    pages={117--127}
+}
 ```
 
 
