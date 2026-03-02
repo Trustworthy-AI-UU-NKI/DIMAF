@@ -5,7 +5,7 @@ This folder contains all files related to the interpretability of DIMAF, includi
 - Visualization of WSI prototypes
 - Visualization of RNA prototypes
 
-We are currently working on visualizations for further interpretability of DIMAF to provide a deeper understanding of multimodal interactions, both intra- and inter-modal. This upcoming feature will offer more robust insights into how different data modalities contribute to survival prediction. **Coming soon – stay tuned!**
+We are currently working on visualizations for further interpretability of DIMAF to provide a deeper understanding of multimodal interactions, both intra- and inter-modal. This upcoming feature will offer more robust insights into how different data modalities contribute to survival prediction. 
 
 ![Overview of DIMAF](../../docs/dimaf.png)
 
@@ -14,9 +14,9 @@ We are currently working on visualizations for further interpretability of DIMAF
 - `visualize_shap.ipynb` – Notebook to visualize the normalized mean absolute SHAP values of the disentangled representations. Use this notebook after computing the SHAP values.
 
 ## Visualize WSI prototypes
-- `visualize_wsi_feats.ipynb` – Notebook for visualizing the features of one WSI: # TODO
+- `visualize_wsi_feats.ipynb` – Notebook for visualizing the features of one WSI: 
     - Visualizing the mixture proportion distribution
-    - Visualizing the prototypes by using the closest patches # TODO
+    - Visualizing the prototypes by using the closest patches 
 - `visualize_wsi_feats.py` – Code for visualizing the features of a group (train/test samples) of WSIs:
     - Visualizing the mixture proportion distribution (args.task == pt_assignment_{train OR test})
     - Visualizing the prototypes by using the closest patches (args.task == pt_vis_{train OR test})
