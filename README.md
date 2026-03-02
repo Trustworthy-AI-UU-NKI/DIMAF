@@ -8,10 +8,11 @@ To improve the prediction of cancer survival using whole-slide images and transc
 
 ## Updates
 - **16-09-2025:** First version of the codebase is online!
+- **02-03-2026:** Checkout out new work at https://github.com/Trustworthy-AI-UU-NKI/DIMAFx
 
 ## Future work
-As stated in the paper, future work is currently exploring the inherent interpretability of DIMAF by combining the attention weights of the intra- and inter-modal interactions with SHAP values of the multimodal disentangled features to capture both modality-shared and modality-specific feature importance and multimodal interactions. This dual approach will offer more robust insights into how different data modalities interact in DIMAF for accurate survival prediction. 
-**Coming soon – stay tuned!**
+As stated in the paper, future work is currently exploring the inherent interpretability of DIMAF by combining the attention weights of the intra- and inter-modal interactions with SHAP values of the multimodal disentangled features to capture both modality-shared and modality-specific feature importance and multimodal interactions. This dual approach will offer more robust insights into how different data modalities interact in DIMAF for accurate survival prediction.
+**Checkout our new work [DIMAFx](https://github.com/Trustworthy-AI-UU-NKI/DIMAFx)**
 
 ## Model checkpoints
 Our model is trained on the outputs of the [UNI](https://github.com/mahmoodlab/UNI) foundation model. Due to [UNI licensing restrictions](https://huggingface.co/MahmoodLab/UNI), we cannot provide the pretrained weights of our model directly.
